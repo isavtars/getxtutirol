@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'Screen/home_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -22,7 +24,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// GetX Bonus Features
+// RouteMangements simple
+//Getx Navigations and Routes Managements
 
 class MyPage extends StatelessWidget {
   const MyPage({super.key});
@@ -30,122 +33,48 @@ class MyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(
-                child: Text(
-                  " GetX Bonus Features",
-                  style: TextStyle(fontSize: 22),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Container(
-                padding: const EdgeInsets.all(3),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Color.fromARGB(255, 115, 9, 214),
-                              minimumSize: Size(70, 45)),
-                          onPressed: () {
-                            Get.defaultDialog(
-                              radius: 10.0,
-                              contentPadding: const EdgeInsets.all(20.0),
-                              title: 'title',
-                              middleText: 'content',
-                              textConfirm: 'Okay',
-                              confirm: OutlinedButton.icon(
-                                onPressed: () => Get.back(),
-                                icon: const Icon(
-                                  Icons.check,
-                                  color: Colors.blue,
-                                ),
-                                label: const Text(
-                                  'Okay',
-                                  style: TextStyle(color: Colors.blue),
-                                ),
-                              ),
-                              cancel: OutlinedButton.icon(
-                                onPressed: () {},
-                                icon: Icon(Icons.tap_and_play),
-                                label: Text('label'),
-                              ),
-                            );
-                          },
-                          child: const Text('dailogBox')),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                      child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                  Color.fromARGB(255, 73, 156, 105),
-                              minimumSize: Size(70, 45)),
-                          onPressed: () {
-                            Get.bottomSheet(
-                              Container(
-                                height: 850,
-                                color: Colors.white,
-                                child: const Center(
-                                  child: Text(
-                                    'Count has reached ',
-                                    style: const TextStyle(
-                                        fontSize: 28.0, color: Colors.black),
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                          child: const Text('dailogBox')),
-                    )
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 26, 155, 144),
-                        minimumSize: Size(130, 45)),
-                    onPressed: () {
-                      Get.snackbar(
-                        "this is snackbar",
-                        "we cant able to snack bar in this time",
-                        snackPosition: SnackPosition.BOTTOM,
-                        titleText: const Text(
-                          "heloo",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 22,
-                              color: Colors.white),
-                        ),
-                      );
-                    },
-                    child: Expanded(
-                      child: const Text('snackbar'),
-                    ),
-                  ),
-                ],
-              ),
-            ],
+        body: SafeArea(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Text(
+            "Getx Navigations and Routes Managements",
+            style: TextStyle(
+              fontSize: 22,
+            ),
           ),
-        ),
+          const SizedBox(
+            height: 10,
+          ),
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 0, 180, 156),
+                  minimumSize: const Size(70, 45)),
+              onPressed: () async {
+                var data = await Get.to(
+                    const HomeScreen(
+                      screenTitle: "home",
+                    ),
+                    arguments: "heloo from supper class",
+                    transition: Transition.size);
+                print(data);
+              },
+              child: const Text("Go to home")),
+        ],
       ),
-    );
+    ));
   }
 }
+
+// Get.to()                =====         	          Navigator.push()
+// Get.toNamed()	         ====                     Navigator.pushNamed()
+// Get.back()              =====         	          Navigator.pop(context)
+// Get.off()               =====                    Navigator.pushReplacement()
+// Get.offNamed()              =====         	      Navigator.pushReplacementNamed()
+// Get.offUntil()              =====         	      Navigator.pushAndRemoveUntil()
+// Get.offNamedUntil()              =====         	Navigator.pushNamedAndRemoveUntil()
+// Get.offAndToNamed()              =====         	Navigator.popAndPushNamed()
+// Get.removeRoute()              =====         	  Navigator.removeRoutes()
+// Get.offAllNamed()              =====         	  Navigator.pushNamedAndRemoveUntil()
+// Get.close()              =====         	        Navigator.popUntil()
