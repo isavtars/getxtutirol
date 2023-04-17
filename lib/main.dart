@@ -84,7 +84,7 @@ class MyPage extends StatelessWidget {
                               const Color.fromARGB(255, 0, 180, 156),
                           minimumSize: const Size(70, 45)),
                       onPressed: () async {
-                        Get.toNamed(Routes.screen1);
+                        Get.toNamed(Routes.screen2);
                       },
                       child: const Text("Go to login")),
                 ],
