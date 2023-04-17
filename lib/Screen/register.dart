@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({
     Key? key,
   }) : super(key: key);
 
@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text(
-              "Home Screen",
+              " RegisterScreen",
               style: TextStyle(
                 fontSize: 22,
               ),
@@ -24,14 +24,23 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
+            //dynamic url Links
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 0, 180, 156),
+                    backgroundColor: const Color.fromARGB(255, 36, 17, 58),
                     minimumSize: const Size(70, 45)),
                 onPressed: () async {
                   Get.back();
                 },
-                child: const Text("Go back")),
+                child: const Text("go to mainscreen")),
+            const SizedBox(
+              height: 10,
+            ),
+            Text("${Get.parameters['channel']}"),
+            const SizedBox(
+              height: 10,
+            ),
+            Text("${Get.parameters['content']}"),
           ],
         ),
       ),
